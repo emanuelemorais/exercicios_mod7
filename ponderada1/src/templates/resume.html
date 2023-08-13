@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    .font-montserrat{
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+<body class="font-montserrat">
+    <div class="flex justify-around bg-black py-8">
+        <div class="flex ml-24">
+            <img src="{{ url_for('servir_imagem', filename = 'foto.jpeg') }}" class="rounded-full w-36" />
+            <div class="text-white flex flex-col justify-center text-4xl font-bold pl-8">
+                <p class="text-red-500">Emanuele <br> Morais </p>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center text-white mr-24">
+            <a href="https://www.linkedin.com/in/emanuele-morais/">LinkedIn</a>
+            <a href="https://github.com/emanuelemorais">Github</a>
+            <p>emanuele.lmorais@gmail.com</p>
+        </div>
+    </div>
+    <div class="mx-56">
+        <div class="flex justify-around text-black m-8">
+            <div class="mx-4 w-1/2">
+                <h1 class="font-bold text-2xl">Profile</h1>
+                <p> 
+                    • Technology enthusiast with a strong interest in problem-solving. <br>
+                    • Aspiring developer currently pursuing a degree in Computer Engineering at Inteli - Institute of Technology and Leadership. <br>
+                    • Scholarship recipient of ISMART (Social Institute for Motivating, Supporting, and Recognizing Talents) since 2019 through the Talent Scholarship program. <br>
+                </p>
+            </div>
+            <div class="mx-4 w-1/2">
+                <h1 class="font-bold text-2xl">Education</h1>
+                <div class="my-4">
+                    <h2 class="text-lg">High school</h2>
+                    <p class="text-sm">Colégio Bernoulli - 2021</p>
+                </div>
+                <div >
+                    <h2 class="text-lg">Graduation</h2>
+                    <p class="text-sm">Instituto de tecnologia e liderança - 2025</p>
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="flex justify-around text-black m-8">
+            <div class="mx-4  w-1/2">
+                <h1 class="font-bold text-2xl">Work experience</h1>
+                <div class="my-4">
+                    <h2 class="text-lg">ISMART</h2>
+                    <p class="text-sm">Scholarship - (2019 - Present)</p>
+                </div>
+                <div class="my-4">
+                    <h2 class="text-lg">BTG Pactual</h2>
+                    <p class="text-sm">Summer Job - Web development Intern - (Jul/2022) </p>
+                </div>
+                <div class="my-4">
+                    <h2 class="text-lg">BTG Pactual</h2>
+                    <p class="text-sm">Summer Job - Web development Intern - (Jan/2023)</p>
+                </div>
+                <div class="my-4">
+                    <h2 class="text-lg">BTG Pactual</h2>
+                    <p class="text-sm">Summer Job - Web development Intern - (Jul/2023)</p>
+                </div>
+            </div>
+            <div class="mx-4  w-1/2">
+                <h1 class="font-bold text-2xl">Skills</h1>
+                
+                <div class="my-4">
+                <p class="mb-1 text-base font-medium dark:text-black">Python</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 65%"></div>
+                </div>
+                </div>
+                <div class="my-4">
+                <p class="mb-1 text-base font-medium dark:text-black">JavaScript</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 ">
+                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 40%"></div>
+                </div>
+                </div>
+                <div class="my-4">
+                <p class="mb-1 text-base font-medium dark:text-black">React JS</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 40%"></div>
+                </div>
+                </div>
+                <div class="my-4">
+                <p class="mb-1 text-base font-medium dark:text-black">Angular </p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 20%"></div>
+                </div>
+                </div>
+                <div class="my-4">
+                <p class="mb-1 text-base font-medium dark:text-black">C# </p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                    <div class="bg-red-500 h-1.5 rounded-full" style="width: 20%"></div>
+                </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
