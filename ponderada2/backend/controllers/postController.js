@@ -3,9 +3,8 @@ const prisma = require('../database/prismaClient');
 const newPost = async (req, res) => {
   try {
 
-    const { title, content, authorId } = req.body;
-
-    // Cria um novo usuário no banco de dados usando o Prisma 
+    const { title, content } = req.body;
+    var authorId =  parseInt(req.userId);
     const newPost = await prisma.post.create({
       data: {
         title,
@@ -39,7 +38,41 @@ const getPostById = async (req, res) => {
         }
 };
 
+const editPostById = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id); 
+    const novosDados = req.body;
+    const updatedUser = await prisma.post.update({
+      where: { id },
+      data : novosDados
+    });
+
+    return res.status(201).json(updatedUser);
+
+  } catch (error) {
+    console.error('Erro ao editar:', error);
+    throw error;
+  }
+};
+
+const deletePostById = async (req, res) => {
+  try {
+    const id = parseInt(req.params.id); 
+    const deletedUser = await prisma.post.delete({
+      where: { id }
+    });
+
+    return res.status(201).json(deletedUser);
+
+  } catch (error) {
+    console.error('Erro ao editar:', error);
+    throw error;
+  }
+};
+
 module.exports = {
     newPost,
-    getPostById
+    getPostById,
+    editPostById,
+    deletePostById
 };

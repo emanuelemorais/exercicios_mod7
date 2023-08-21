@@ -11,4 +11,12 @@ router.get('/all', authenticateToken, (req, res) => {
     postController.getPostById(req, res);
 })
 
+router.put('/edit/:id', authenticateToken, (req, res) => {
+    postController.editPostById(req, res);
+});
+
+router.delete('/delete/:id', authenticateToken, (req, res) => {
+    postController.deletePostById(req, res);
+});
+
 module.exports = router;
