@@ -24,7 +24,7 @@ const newPost = async (req, res) => {
 
 const getPostById = async (req, res) => {
     try {
-        var authorId =  parseInt(req.params.id);
+        var authorId =  parseInt(req.userId);
         const posts = await prisma.post.findMany({
             where: {
               authorId: authorId
