@@ -28,7 +28,7 @@ model User {
   id      Int      @id @default(autoincrement())
   email   String?  
   user    String  @unique
-  password String 
+  hashedPassword String 
   posts   Post[]
   profile Profile? 
 }

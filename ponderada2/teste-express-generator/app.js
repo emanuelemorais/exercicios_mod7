@@ -5,6 +5,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var userRoutes = require('./routes/userRoutes') 
 var postRoutes = require('./routes/postRoutes')
+var authRoutes = require('./routes/authRoutes')
 
 var app = express();
 
@@ -20,7 +21,8 @@ app.use(cookieParser()); //coloca um objeto chamado cookies na propriedade req d
 
 app.use('/', indexRouter);
 app.use('/users', userRoutes);
-app.use('/post', postRoutes)
+app.use('/post', postRoutes);
+app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
