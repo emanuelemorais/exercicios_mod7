@@ -1,4 +1,5 @@
 var express = require('express');
+const cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -8,6 +9,10 @@ var postRoutes = require('./routes/postRoutes')
 var authRoutes = require('./routes/authRoutes')
 
 var app = express();
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 app.use(logger('dev')); // irá registrar as informações da solicitação no console, como o método HTTP, o caminho, o código de status e o tempo de resposta.
 
