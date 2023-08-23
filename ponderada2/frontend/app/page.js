@@ -24,7 +24,7 @@ const { authToken, login } = useAuth();
       if (response.ok) {
         const data = await response.json();
         login(data.token);
-        router.push("/posts");
+        router.push("/all_posts");
 
       } else {
         console.error('Erro no login');

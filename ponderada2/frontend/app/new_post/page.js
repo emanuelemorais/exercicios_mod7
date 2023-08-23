@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from "next/navigation";
 
@@ -7,38 +7,10 @@ export default function Home() {
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [data, setData] = useState([]);
   const { authToken } = useAuth();
-  console.log(title);
-  console.log(content);
+  
 
   const router = useRouter();
-
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const headers = new Headers();
-        headers.append('Authorization', authToken);
-
-        const res = await fetch('http://localhost:3001/post/all/', {
-          headers: headers,
-        });
-
-        if (res.ok) {
-          const jsonData = await res.json();
-          console.log(jsonData);
-          setData(jsonData);
-
-        } else {
-          console.error('Error fetching data:', res.status);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchUserData();
-  }, []);
 
   const handleSubmitPost = async (e) => {
     e.preventDefault();
@@ -59,7 +31,7 @@ export default function Home() {
       if (res.ok) {
         const data = await res.json();
         console.log(data);
-        router.push("/posts");
+        router.push("/all_posts");
 
       } else {
         console.error('Erro no post');
@@ -72,11 +44,6 @@ export default function Home() {
 
   return (
   <div>
-    <div>
-      {data.map(post => (
-        <p key={post.id}>{post.title}</p>
-      ))}
-    </div>
 
     <div>
     <form onSubmit={handleSubmitPost}>
