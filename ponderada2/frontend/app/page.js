@@ -4,7 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const { authToken, login } = useAuth();
+const { authToken, login } = useAuth();
   const [user, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
