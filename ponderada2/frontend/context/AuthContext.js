@@ -10,8 +10,12 @@ export function AuthProvider({ children }) {
     setAuthToken(token);
   };
 
+  function isUserAuthenticated() {
+    return !!authToken;
+  };
+
   return (
-    <AuthContext.Provider value={{ authToken, login }}>
+    <AuthContext.Provider value={{ authToken, login, isUserAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

@@ -24,8 +24,9 @@ async function login(req, res) {
     }
 
     const token = jwt.sign({ loginId : login.id }, 'secreto', { expiresIn: '1h' });
+    const loginId = login.id;
 
-    return res.json({ token });
+    return res.json({ token, loginId });
 
   } catch (error) {
     console.error('Erro ao fazer login:', error);
