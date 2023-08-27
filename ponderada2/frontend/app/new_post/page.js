@@ -10,9 +10,9 @@ export default function newPost() {
   const { authToken, isUserAuthenticated } = useAuth();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   isUserAuthenticated() ? console.log("ok") : router.push("/");
-  // }, []);
+  useEffect(() => {
+    isUserAuthenticated() ? console.log("ok") : router.push("/");
+  }, []);
 
   const handleSubmitPost = async (e) => {
     e.preventDefault();

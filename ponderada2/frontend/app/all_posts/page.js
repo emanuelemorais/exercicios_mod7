@@ -8,10 +8,10 @@ export default function allPosts() {
   const [data, setData] = useState([]);
   const { authToken, isUserAuthenticated } = useAuth();
 
-  // useEffect(() => {
-  //   console.log(isUserAuthenticated())
-  //   isUserAuthenticated() ? console.log("ok") : router.push("/");
-  // }, []);
+  useEffect(() => {
+    console.log(isUserAuthenticated())
+    isUserAuthenticated() ? console.log("ok") : router.push("/");
+  }, []);
 
   const handleNewPost = () => {
     if (authToken){
@@ -25,7 +25,7 @@ export default function allPosts() {
     async function fetchUserData() {
       try {
         const headers = new Headers();
-        headers.append('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbklkIjoxLCJpYXQiOjE2OTMxNjk2MjQsImV4cCI6MTY5MzE3MzIyNH0.WggoXuU4jJnZqFwYS8Ng-3EISwf_YU4-1wfOO6Ym7E8');
+        headers.append('Authorization', authToken);
         console.log(authToken);
 
         const res = await fetch('http://localhost:3001/post/all/', {
