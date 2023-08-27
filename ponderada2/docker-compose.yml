@@ -24,6 +24,16 @@ services:
       - ./backend/.env
     networks:
       - mynetwork
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
 
 networks:
   mynetwork:
