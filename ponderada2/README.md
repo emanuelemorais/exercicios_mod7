@@ -76,7 +76,7 @@ Para execução, siga os seguintes passos:
 - Execute o comando `docker-compose up`.
 - Ao terminar o carregamento abra um navegador e acesse `http://localhost:3000`.
 
-## Instruções para acessar a aplicação (cadastro -> login -> ver notas -> nova nota -> todas as notas )
+## Instruções para acessar a aplicação 
 
 - A pagina inicial ao acessar `http://localhost:3000` é a página de login:
 
