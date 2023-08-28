@@ -12,6 +12,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - mynetwork
+      
   backend:
     build: 
       context: ./backend
@@ -24,6 +25,7 @@ services:
       - ./backend/.env
     networks:
       - mynetwork
+
   frontend:
     build: 
       context: ./frontend
