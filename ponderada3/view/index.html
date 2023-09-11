@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ponderada 3</title>
+</head>
+<body>
+    <h1>Previsão da gravidade de um acidente</h1>
+
+        <label >Tipo de acidente:</label>
+        <select id="tipo-acidente">
+            <option value=4 >Colisão</option>
+            <option value=7 >Queda</option>
+            <option value=8 >Saida de pista</option>
+            <option value=3 >Choques com objetos</option>
+            <option value=5 >Engavetamento</option>
+            <option value=1 >Atropelamento</option>
+            <option value=2 >Capotamento</option>
+            <option value=0 >Abalroamento</option>
+            <option value=9 >Tombamento</option>
+            <option value=6 >Outros</option>
+        </select>
+        <br />
+        <br />
+
+        <label >Tipo de ocorrencia:</label>
+        <select id="tipo-ocorrencia">
+            <option value=2 >Sem vítimas</option>
+            <option value=0 >Com vítimas</option>
+            <option value=1 >Danos materias</option>
+        </select>
+        <br />
+        <br />
+
+        <label >Sentido:</label>
+        <select id="sentido">
+            <option value=4 >Norte</option>
+            <option value=6 >Sul</option>
+            <option value=3 >Leste</option>
+            <option value=5 >Oeste</option>
+            <option value=1 >Crescente</option>
+            <option value=2 >Decrescente</option>
+            <option value=0 >Ambos</option>
+
+        </select>
+        <br />
+        <br />
+
+        <button type="submit" onclick="preveGravidade()">Enviar</button>
+    
+    <br />
+    <h4>A previsão é:</h4>
+    <p id="previsao"></div>
+    
+    <script>
+        function preveGravidade() {
+        const tipo_acidente_quant = document.getElementById("tipo-acidente").value;
+        const tipo_ocorrencia_quant = document.getElementById("tipo-ocorrencia").value;
+        const sentido_quant = document.getElementById("sentido").value;
+
+        fetch("http://0.0.0.0:8000/nova_previsao", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 
+            tipo_acidente_quant,
+            tipo_ocorrencia_quant,
+            sentido_quant
+        }),
+        })
+          .then((response) => {
+            console.log(response);
+            if (!response.ok) {
+              throw new Error("Erro na resposta");
+            }
+            return response.text()
+          })
+          .then((data) => {
+            document.getElementById("previsao").innerHTML = data;
+            })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+    </script>
+</body>
+</html>
