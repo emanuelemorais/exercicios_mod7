@@ -1,4 +1,4 @@
-from controller.dashborad import new_prediction, return_dados
+from controller.dashborad import new_prediction, return_dados_dashboard
 from models.dashboard import Data
 from fastapi.security.oauth2 import OAuth2PasswordBearer
 from fastapi import Depends
@@ -11,8 +11,8 @@ def init_routes_dashboard(app):
         return resposta
     
     oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
+    
     @app.get("/dashboard/dados")
     def dados(token: str = Depends(oauth2_scheme)):
-        dados_armazenados = return_dados(token)
+        dados_armazenados = return_dados_dashboard(token)
         return dados_armazenados

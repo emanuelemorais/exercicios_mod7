@@ -15,3 +15,11 @@ class Crashs(Base):
     tipo_acidente_quant = Column(Integer)
     tipo_ocorrencia_quant = Column(Integer)
     sentido_quant = Column(Integer)
+
+class Predictions(Base):
+    __tablename__ = 'predictions'
+    id= Column(Integer, primary_key=True, autoincrement=True)
+    gravidade = Column(Integer)
+    tipo_acidente_quant = Column(Integer)
+    tipo_ocorrencia_quant = Column(Integer)
+    sentido_quant = Column(Integer)

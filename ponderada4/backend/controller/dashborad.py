@@ -2,6 +2,8 @@ from pycaret.classification import *
 import pandas as pd
 from models.db import session
 from models.dashboard import Crashs
+from models.dashboard import Predictions
+from fastapi import HTTPException
 import jwt
 from dotenv import load_dotenv
 import os
@@ -23,7 +25,7 @@ def new_prediction(tipo_acidente_quant, tipo_ocorrencia_quant, sentido_quant):
 
         resultado = modelo_carregado.predict(dados_de_entrada)
 
-        previsao = Crashs(
+        previsao = Predictions(
             tipo_acidente_quant=tipo_acidente_quant,
             tipo_ocorrencia_quant=tipo_ocorrencia_quant,
             sentido_quant=sentido_quant,
@@ -33,38 +35,29 @@ def new_prediction(tipo_acidente_quant, tipo_ocorrencia_quant, sentido_quant):
         session.commit()
         session.refresh(previsao)
 
-        if resultado[0] == 0:
-            resposta = "Grave"
-        elif resultado[0] == 1:
-            resposta = "Leve"
-        elif resultado[0] == 2:
-            resposta = "Moderado"
-        elif resultado[0] == 3:
-            resposta = "Significativo"
-        return resposta
+        return previsao
     
     except Exception as e:
         print(str(e))   
         return e
 
 
-def return_dados(token):
+def return_dados_dashboard(token):
 
     try:
-        decoded_token = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+        if(token):
+            decoded_token = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
 
-        # Agora, você pode acessar as informações no JWT decodificado
-        exp = decoded_token['exp']
-        iat = decoded_token['iat']
-        email = decoded_token['email']
+            exp = decoded_token['exp']
+            iat = decoded_token['iat']
+            email = decoded_token['email']
 
-        dados = session.query(Crashs).all()
+            dados = session.query(Predictions).all()
+            return dados
+        raise HTTPException(status_code=401, detail="Invalid credentials")
 
-        return {"email": email, "data": dados}
 
-
-    except jwt.ExpiredSignatureError:
-        print("O token JWT está expirado.")
-    except jwt.InvalidTokenError:
-        print("O token JWT é inválido.")
+    except Exception as e:
+        print(str(e))   
+        return e
     

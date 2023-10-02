@@ -34,5 +34,8 @@ def get_user(email, password):
             token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
             return token
         raise HTTPException(status_code=401, detail="Invalid credentials")
+    except HTTPException as http_exc:
+        raise http_exc
     except Exception as e:
-        return e
+        print(e)
+        raise HTTPException(status_code=500, detail="Internal Server Error")

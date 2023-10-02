@@ -1,5 +1,6 @@
 from models.dashboard import Crashs
 from models.user import User
+from models.dashboard import Predictions
 from models.base import Base
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy import create_engine, MetaData, Table
