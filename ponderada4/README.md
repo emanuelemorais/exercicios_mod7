@@ -17,8 +17,8 @@ Para a construção dessa atividade foi utilizado Docker, EC2 e RDS. O primeiro 
 ![image](https://github.com/emanuelemorais/exercicios_mod7/assets/99221221/662c2672-71c8-452a-9029-1469b3f3bcee)
 
 ### Imagens DockerHub
-Front: https://hub.docker.com/repository/docker/manumorais1231/front-ponderada4/general
-Back: https://hub.docker.com/repository/docker/manumorais1231/back-ponderada4/general
+- Front: https://hub.docker.com/repository/docker/manumorais1231/front-ponderada4/general
+- Back: https://hub.docker.com/repository/docker/manumorais1231/back-ponderada4/general
 
 
 ## Passos para execução
