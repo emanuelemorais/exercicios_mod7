@@ -1,1 +1,9 @@
-uvicorn
+fastapi==0.103.1
+uvicorn==0.23.2
+sqlalchemy
+python-dotenv==1.0.0
+PyJWT==2.3.0
+pydantic
+pandas==1.5.3
+pycaret==3.0.4
+psycopg2
